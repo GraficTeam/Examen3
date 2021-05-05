@@ -2,12 +2,22 @@ import java.util.*;
 import java.text.Collator;
 
 public class test {
-    public static void main(String[] args) {
-        Scanner teclado = new Scanner(System.in);
+    public static int comparacion(String cad1, String cad2){
         Collator compara = Collator.getInstance();
         compara.setStrength(Collator.PRIMARY);
+        if (compara.compare(cad1, cad2) == 0)
+            return 0;
+        else if (compara.compare(cad1, cad2) < 0)
+            return -1;
+        else if (compara.compare(cad1, cad2) > 0)
+            return 1;
+        return 0;
+    }
+    
+    public static void main(String[] args) {
+        Scanner teclado = new Scanner(System.in);
         String frase, frase1, frase2;
-        int n, i;
+        int n, i, resul;
 
         System.out.println("Ingrese texto");
         frase = teclado.nextLine();
@@ -24,16 +34,19 @@ public class test {
         //elimina signos de puntuacion y pasa las palabras limpias a otro vector
         for (i = 0; i < n; i++)
             palabras[i] = aux[i].replaceAll("\\p{Punct}", "");
-
         //muestra lo elementos del vector en pantalla
         for (i = 0; i < n; i++)
             System.out.println(palabras[i]);
-
-        if (compara.compare(frase1, frase2) == 0)
-            //frase1 igual a frase2
-        else if (compara.compare(frase1, frase2) < 0)
-            //frase1 menor que frase2
-        else if (compara.compare(frase1, frase2) > 0)
-            //frase1 mayor que frase2
+        /*Ejemplo de comparacion de dos palabras
+        retorna: 1 si frase1 es mayor a frase2
+                -1 si frase1 es menor a frase2
+                 0 si ambas frases son iguales
+         */
+        System.out.println("Ingrese frase 1");
+        frase1 = teclado.nextLine();
+        System.out.println("Ingrese frase 2");
+        frase2 = teclado.nextLine();
+        resul = comparacion(frase1, frase2);
+        System.out.println("Resultado = " + resul);
     }
 }
