@@ -72,16 +72,4 @@ class ArbolABB {
     }
 
 
-	void recorridoEnOrdenFrecuencia(Node root)
-	{
-	    if (root != null) {
-	
-	        recorridoEnOrden(root.left);
-	        System.out.println("-->"+root.dato+"  "+root.obtenFrecuencia());
-	        recorridoEnOrden(root.right);
-	  
-	        
-	    }
-	}
-
 }
