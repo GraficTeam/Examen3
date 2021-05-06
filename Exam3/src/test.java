@@ -49,13 +49,13 @@ public class test {
         System.out.println("Ingrese texto");
         frase = teclado.nextLine();
         aux = palabras(frase);
+        //Insercion del texto en el arbol
         for (i = 0; i < n; i++){
-
             arbol.insertar(aux[i]);
-
         }
+        //Muestra la lista de palabras y su frecuencua
         System.out.println("PALABRA \t    FRECUENCIA");
-            arbol.recorridoEnOrden(arbol.root);
-
+        	//Recorrido del arbol
+            arbol.recorridoEnOrden(arbol.raiz);
     }
 }

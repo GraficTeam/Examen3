@@ -1,75 +1,62 @@
 class ArbolABB {
 
-    class Node
+	//Implementacion del nodo
+    class Nodo
     {
         String dato;
         int frecuencia;
-        Node left, right;
+        Nodo left, right;
 
-        public Node(String elemento)
+        public Nodo(String elemento)
         {
             dato = elemento;
             left = right = null;
             frecuencia=1;
         }
+        //Metodo parar aumentar la frecuencia
         public void aumentaFrecuencia() {
         	frecuencia+=1;
         }
-        
-        public int obtenFrecuencia()
-        {
-        	return frecuencia;
-        }
-
     }
 
-    Node root;
+    Nodo raiz;
 
     ArbolABB(){
-        root = null;
+        raiz = null;
     }
 
     // Metodo que llama a la funcion insertar
     void insertar(String dato){
 
-        root = insertarRec(root, dato);
+        raiz = insertarRec(raiz, dato);
     }
 
     //Metodo recursivo para insertar un nodo al arbol
-    Node insertarRec(Node root, String key)
+    Nodo insertarRec(Nodo raiz, String key)
     {
-
-        if (root == null){
-
-            root = new Node(key);
-            return root;
+        if (raiz == null){
+            raiz = new Nodo(key);
+            return raiz;
         }
 
-
-        if (test.comparacion(key,root.dato)== -1)
-            root.left = insertarRec(root.left, key);
-
+        //Compara las cadenas
+        if (test.comparacion(key,raiz.dato)== -1)
+            raiz.left = insertarRec(raiz.left, key); //Inserta a la izquierda
         else 
-        	if (test.comparacion(key,root.dato)== 1)
-            root.right = insertarRec(root.right, key);
+        	if (test.comparacion(key,raiz.dato)== 1)
+            raiz.right = insertarRec(raiz.right, key); //Inserta a la derecha
         	else
-        		root.aumentaFrecuencia();
-
-        return root;
+        		raiz.aumentaFrecuencia(); //Aumena la frecuencia
+        return raiz;
     }
 
     //Metodo recursivo encargado de recorrer el arbol
-    void recorridoEnOrden(Node root)
+    void recorridoEnOrden(Nodo raiz)
     {
-        if (root != null) {
-
-            recorridoEnOrden(root.left);
-            System.out.println(root.dato+"\t\t\t "+root.frecuencia);
-            recorridoEnOrden(root.right);
-      
-            
+        if (raiz != null) {
+            recorridoEnOrden(raiz.left);
+            System.out.println(raiz.dato+"\t\t\t "+raiz.frecuencia);
+            recorridoEnOrden(raiz.right);
         }
     }
-
-
 }
