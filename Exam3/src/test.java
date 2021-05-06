@@ -54,6 +54,7 @@ public class test {
             arbol.insertar(aux[i]);
 
         }
+        System.out.println("PALABRA \t    FRECUENCIA");
             arbol.recorridoEnOrden(arbol.root);
 
     }

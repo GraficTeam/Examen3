@@ -3,13 +3,24 @@ class ArbolABB {
     class Node
     {
         String dato;
+        int frecuencia;
         Node left, right;
 
         public Node(String elemento)
         {
             dato = elemento;
             left = right = null;
+            frecuencia=1;
         }
+        public void aumentaFrecuencia() {
+        	frecuencia+=1;
+        }
+        
+        public int obtenFrecuencia()
+        {
+        	return frecuencia;
+        }
+
     }
 
     Node root;
@@ -38,8 +49,11 @@ class ArbolABB {
         if (test.comparacion(key,root.dato)== -1)
             root.left = insertarRec(root.left, key);
 
-        else if (test.comparacion(key,root.dato)== 1)
+        else 
+        	if (test.comparacion(key,root.dato)== 1)
             root.right = insertarRec(root.right, key);
+        	else
+        		root.aumentaFrecuencia();
 
         return root;
     }
@@ -50,9 +64,24 @@ class ArbolABB {
         if (root != null) {
 
             recorridoEnOrden(root.left);
-            System.out.println("-->"+root.dato);
+            System.out.println(root.dato+"\t\t\t "+root.frecuencia);
             recorridoEnOrden(root.right);
+      
+            
         }
     }
+
+
+	void recorridoEnOrdenFrecuencia(Node root)
+	{
+	    if (root != null) {
+	
+	        recorridoEnOrden(root.left);
+	        System.out.println("-->"+root.dato+"  "+root.obtenFrecuencia());
+	        recorridoEnOrden(root.right);
+	  
+	        
+	    }
+	}
 
 }
